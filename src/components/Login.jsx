@@ -1,5 +1,9 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/userSlice';
+
+
 
 
 
@@ -9,19 +13,24 @@ const Login = () => {
 
 
   
-const [emailId , setEmailId] = useState("chintu@gmail.com");
-const [password, setPassword] = useState("Chintu@123");
+const [emailId , setEmailId] = useState("");
+const [password, setPassword] = useState("");
+
+const dispatch = useDispatch();
 
 const handleLogin = async () => {
   try{
-     const result = axios.post("http://localhost:7777/login" , {
+     const result =await axios.post("http://localhost:7777/login" , {
       emailId ,
       password
      },
       {withCredentials : true}
     
     )
+    console.log(result);
+    dispatch(addUser(result.data));
   }
+  
   catch(err){
     console.error(err);
   }
@@ -39,7 +48,7 @@ const handleLogin = async () => {
 
     <fieldset className="fieldset">
   <legend className="fieldset-legend">Password</legend>
-  <input type="text" className="input"  onChange={(e) => setPassword(e.target.value) } />
+  <input type="password" className="input"  onChange={(e) => setPassword(e.target.value) } />
 </fieldset>
     </div>
    

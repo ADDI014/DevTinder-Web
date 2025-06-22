@@ -7,7 +7,7 @@ const userSlice = createSlice({
     addUser: (state, action) => {
       return action.payload; // set user state to payload (e.g. user object)
     },
-    removeUser: (state, action) => {
+    removeUser: () => {
       return null; // resets the user on logout
     }
   }
