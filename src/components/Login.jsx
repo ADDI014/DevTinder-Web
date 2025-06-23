@@ -10,6 +10,7 @@ const Login = () => {
 
 const [emailId , setEmailId] = useState("");
 const [password, setPassword] = useState("");
+const [error, setError] = useState("");
 
 const dispatch = useDispatch();
 const navigate = useNavigate();
@@ -28,7 +29,7 @@ const handleLogin = async () => {
   }
   
   catch(err){
-    console.error(err);
+    setError(err?.response?.data || "something went wrong...");
   }
 }
   return (
@@ -47,6 +48,8 @@ const handleLogin = async () => {
   <input type="password" className="input"  onChange={(e) => setPassword(e.target.value) } />
 </fieldset>
     </div>
+
+    <p className='text-red-700'>{error}</p>
    
     <div className="card-actions justify-center">
       <button className="btn btn-primary" onClick={handleLogin}>Login</button>
