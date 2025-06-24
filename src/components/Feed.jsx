@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { BASR_URL } from '../utils/constants'
 import { useDispatch, useSelector } from 'react-redux'
 import { addFeed } from '../utils/feedSlice'
+import FeedCard from './FeedCard'
 
 const Feed = () => {
 
@@ -29,9 +30,9 @@ const Feed = () => {
   getFeed();
   }, []);
 
-  return (
+  return feed && (
     <div>
-      Feed
+      <FeedCard user={feed[0]}/>
     </div>
   )
 }
