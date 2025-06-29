@@ -38,6 +38,20 @@ const handleLogin = async () => {
 }
 
 
+const handleSignUp = async () => {
+  try{
+    const res = await axios.post(BASR_URL + "/signup", {firstName, lastName, emailId, password}, {
+      withCredentials :  true,
+    })
+
+    dispatch(addUser(res?.data?.data));
+    return navigate("/profile");
+  }
+  catch(err){
+       setError(err?.response?.data || "something went wrong...");
+  }
+}
+
   return (
     <div className='flex justify-center my-10'>
       <div className="card card-border bg-base-300 w-96">
@@ -51,7 +65,7 @@ const handleLogin = async () => {
 
     <fieldset className="fieldset">
   <legend className="fieldset-legend">LastName</legend>
-  <input type="password" className="input" value={lastName} onChange={(e) => setLastName(e.target.value) } />
+  <input type="text" className="input" value={lastName} onChange={(e) => setLastName(e.target.value) } />
 </fieldset>
     </div>}
     <div>
@@ -69,7 +83,7 @@ const handleLogin = async () => {
     <p className='text-red-700'>{error}</p>
    
     <div className="card-actions justify-center">
-      <button className="btn btn-primary" onClick={handleLogin}>{isLogin ? "Login" : "Sign Up"}</button>
+      <button className="btn btn-primary" onClick={isLogin ?  handleLogin : handleSignUp}>{isLogin ? "Login" : "Sign Up"}</button>
     </div>
 
     <p className='m-auto my-5 cursor-pointer' onClick={() => setIsLogin((value) => !value)}>{isLogin ? "New User ? register Here" : "Existing User ? Login Here"}</p>
