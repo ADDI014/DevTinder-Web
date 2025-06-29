@@ -30,6 +30,12 @@ const Feed = () => {
   getFeed();
   }, []);
 
+
+  if(!feed) return;
+
+  if(feed.length <= 0) return <h1 className='flex justify-center font-bold my-10'>No New User Exists</h1>
+  
+
   return feed && (
     <div>
       <FeedCard user={feed[0]}/>
