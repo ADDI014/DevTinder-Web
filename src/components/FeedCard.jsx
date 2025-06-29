@@ -7,7 +7,7 @@ const FeedCard = ({user}) => {
     <div className='flex justify-center mb-20'>
       <div className="card bg-base-300 w-64 shadow-sm">
   <figure>
-    <img
+    <img className='h-60 w-60 object-center'
       src={photoUrl}
       alt="user Photo"/>
   </figure>
