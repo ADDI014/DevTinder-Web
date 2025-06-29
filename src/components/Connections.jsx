@@ -39,6 +39,7 @@ const Connections = () => {
         {connection.map((connection) => {
             const { _id, firstName, lastName, photoUrl, age, gender, about} = connection;
             return (
+            
            <div key={_id} className="flex justify-center items-center py-4 px-4">
   <div className="card card-side bg-base-200 shadow-sm w-full max-w-4xl">
     <figure className="pl-6 flex items-center">
