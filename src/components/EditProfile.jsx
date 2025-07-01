@@ -49,65 +49,115 @@ const EditProfile = ({user}) => {
 
   return (
     <>
-    <div className='flex justify-center my-10'>
-      <div className='flex justify-center items-center'>
-      <div className="card card-border bg-base-300 w-full max-w-md mb-20">
-  <div className="card-body">
-    <h2 className="card-title flex justify-center text-sm">Edit Profile</h2>
-    <div>
-      <fieldset className="fieldset">
-  <legend className="fieldset-legend">FirstName:</legend>
-  <input type="text" className="input input-sm w-full"  value={firstName}  onChange={(e) => setFirstName(e.target.value) } />
-</fieldset>
+  <div
+  className="min-h-screen bg-cover bg-center flex justify-center items-center px-4"
+  style={{ backgroundImage: "url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1600&q=80')" }}
+>
+  {/* Combined Card Container */}
+  <div className="bg-base-200 bg-opacity-90 rounded-2xl shadow-lg flex flex-col md:flex-row w-full max-w-4xl overflow-hidden">
+    
+    {/* Edit Profile Form */}
+    <div className="w-full md:w-1/2 p-6">
+      <h2 className="text-xl font-bold text-center mb-4">Edit Profile</h2>
 
-    <fieldset className="fieldset">
-  <legend className="fieldset-legend">LastName:</legend>
-  <input type="text" className="input input-sm w-full" value={lastName}  onChange={(e) => setLastName(e.target.value) } />
-</fieldset>
+      <fieldset className="mb-3">
+        <legend className="text-sm">First Name</legend>
+        <input
+          type="text"
+          className="input input-bordered input-sm w-full"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+      </fieldset>
 
-   <fieldset className="fieldset">
-  <legend className="fieldset-legend">Age:</legend>
-  <input type="text" className="input input-sm w-full" value={age}  onChange={(e) => setAge(e.target.value) } />
-</fieldset>
+      <fieldset className="mb-3">
+        <legend className="text-sm">Last Name</legend>
+        <input
+          type="text"
+          className="input input-bordered input-sm w-full"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
+      </fieldset>
 
+      <fieldset className="mb-3">
+        <legend className="text-sm">Age</legend>
+        <input
+          type="text"
+          className="input input-bordered input-sm w-full"
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
+        />
+      </fieldset>
 
-   <fieldset className="fieldset">
-  <legend className="fieldset-legend">Gender:</legend>
-  <input type="text" className="input input-sm w-full" value={gender}  onChange={(e) => setGender(e.target.value) } />
-</fieldset>
+      <fieldset className="mb-3">
+        <legend className="text-sm">Gender</legend>
+        <input
+          type="text"
+          className="input input-bordered input-sm w-full"
+          value={gender}
+          onChange={(e) => setGender(e.target.value)}
+        />
+      </fieldset>
 
-  <fieldset className="fieldset">
-  <legend className="fieldset-legend">PhotoUrl:</legend>
-  <input type="text" className="input input-sm w-full" value={photoUrl}  onChange={(e) => setPhotoUrl(e.target.value) } />
-</fieldset>
+      <fieldset className="mb-3">
+        <legend className="text-sm">Photo URL</legend>
+        <input
+          type="text"
+          className="input input-bordered input-sm w-full"
+          value={photoUrl}
+          onChange={(e) => setPhotoUrl(e.target.value)}
+        />
+      </fieldset>
 
-  <fieldset className="fieldset">
-  <legend className="fieldset-legend">Skills:</legend>
-  <input type="text" className="input input-sm w-full" value={skills}  onChange={(e) => setSkills(e.target.value) } />
-</fieldset>
+      <fieldset className="mb-3">
+        <legend className="text-sm">Skills</legend>
+        <input
+          type="text"
+          className="input input-bordered input-sm w-full"
+          value={skills}
+          onChange={(e) => setSkills(e.target.value)}
+        />
+      </fieldset>
 
-  <fieldset className="fieldset">
-  <legend className="fieldset-legend">About:</legend>
-  <input type="text" className="input input-sm w-full" value={about}  onChange={(e) => setAbout(e.target.value) } />
-</fieldset>
+      <fieldset className="mb-3">
+        <legend className="text-sm">About</legend>
+        <input
+          type="text"
+          className="input input-bordered input-sm w-full"
+          value={about}
+          onChange={(e) => setAbout(e.target.value)}
+        />
+      </fieldset>
+
+      {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+
+      <div className="text-center mt-4">
+        <button className="btn btn-primary btn-sm" onClick={saveProfile}>
+          Save Profile
+        </button>
+      </div>
     </div>
-   
-    <div className="card-actions justify-center">
-      <button className="btn btn-primary btn-sm" onClick={saveProfile}>Save Profile</button>
+
+    {/* Preview Card */}
+    <div className="w-full md:w-1/2 p-6 flex justify-center items-center border-t md:border-t-0 md:border-l border-gray-300">
+      <FeedCard
+        user={{ firstName, lastName, age, gender, photoUrl, skills, about }}
+        showActions={false}
+      />
     </div>
   </div>
-  <p>{error}</p>
+
+  {/* Toast Notification */}
+  {toast && (
+    <div className="toast toast-top toast-center">
+      <div className="alert alert-success">
+        <span>Profile saved successfully.</span>
+      </div>
+    </div>
+  )}
 </div>
-    </div>
 
-    <FeedCard user={{firstName , lastName, age, gender, photoUrl , skills, about}}/>
-    </div>
-
-  { toast && <div className="toast toast-top toast-center">
-  <div className="alert alert-success">
-    <span>Profile saved successfully.</span>
-  </div>
-</div>}
      </>
   )
 }

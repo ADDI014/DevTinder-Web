@@ -4,8 +4,7 @@ import { BASR_URL } from '../utils/constants';
 import { useDispatch } from 'react-redux';
 import { removeRequestFeed } from '../utils/feedSlice';
 
-const FeedCard = ({user}) => {
-
+const FeedCard = ({user }) => {
     const { _id , firstName , lastName , photoUrl, age, gender, about, skills} = user;
     const dispatch = useDispatch();
 
@@ -24,25 +23,34 @@ const FeedCard = ({user}) => {
 
 
   return (
-    <div className='flex justify-center mb-20'>
-      <div className="card bg-base-300 w-64 shadow-sm">
-  <figure>
-    <img className='h-60 w-60 object-center'
+<div
+  className="flex justify-center min-h-screen"
+  style={{
+    backgroundImage: `url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1350&q=80')`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  }}
+>
+
+      <div className="card bg-white shadow-2xl w-full max-w-sm rounded-xl overflow-hidden my-20">
+  <figure className='bg-gray-100 p-4'>
+    <img className='h-48 w-48  object-cover rounded-full mx-auto'
       src={photoUrl}
       alt="user Photo"/>
   </figure>
-  <div className="card-body">
-    <h2 className="card-title">{firstName + " " + lastName}</h2>
-    {age && gender && <p>{age + " " + gender}</p>}
-    <p>{skills}</p>
-    <p>{about}</p>
+  <div className="card-body items-center text-center p-6">
+    <h2 className="card-title text-2xl font-semibold mb-1 text-gray-700">{firstName + " " + lastName}</h2>
+    {age && gender && <p className='text-sm text-gray-600 mb-1'>{age + " | " + gender}</p>}
+    {skills && <p className='text-sm text-gray-600 mb-1'>Skills : {skills}</p> }
+    {about && <p className='text-sm text-gray-600 mb-3'>{about}</p>}
 
-    <div className="card-actions justify-center my-4">
-      <button className="btn btn-primary" onClick={() => handleRequest("ignored", _id)}>Ignore</button>
-      <button className="btn btn-secondary" onClick={() => handleRequest("interested" , _id)}>Interested</button>
+    <div className="card-actions flex justify-center gap-4 mt-4">
+      <button className="btn btn-outline btn-error hover:scale-105 transition" onClick={() => handleRequest("ignored", _id)}>Ignore</button>
+      <button className="btn btn-outline btn-success hover:scale-105 transition" onClick={() => handleRequest("interested" , _id)}>Interested</button>
     </div>
   </div>
-</div>
+      </div>
     </div>
   )
 }
