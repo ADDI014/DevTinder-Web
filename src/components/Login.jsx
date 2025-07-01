@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 import { useNavigate } from 'react-router-dom';
-import { BASR_URL } from '../utils/constants';const BASE_URL = import.meta.env.VITE_API_URL;
+import { BASR_URL } from '../utils/constants';
 
 
 const Login = () => {
