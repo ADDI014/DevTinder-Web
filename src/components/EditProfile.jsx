@@ -54,7 +54,7 @@ const EditProfile = ({user}) => {
   style={{ backgroundImage: "url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1600&q=80')" }}
 >
   {/* Combined Card Container */}
-  <div className="bg-base-200 bg-opacity-90 rounded-2xl shadow-lg flex flex-col md:flex-row w-full max-w-4xl overflow-hidden">
+  <div className="bg-base-200 bg-opacity-90 rounded-2xl shadow-lg flex flex-col md:flex-row w-full max-w-4xl overflow-hidden my-20">
     
     {/* Edit Profile Form */}
     <div className="w-full md:w-1/2 p-6">
